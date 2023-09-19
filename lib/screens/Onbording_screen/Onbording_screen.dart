@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miniproject/constant/app_colors.dart';
 import 'package:miniproject/constant/app_images.dart';
-import 'package:miniproject/screens/GroceryHome_screen/Groccery_home_screen.dart';
+import 'package:miniproject/screens/Main_Screen/MainScreen.dart';
 
 class Onbording extends StatefulWidget {
   const Onbording({super.key});
@@ -97,7 +97,7 @@ class _OnbordingState extends State<Onbording> {
                 onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const GrocerryHomeScreen()),
+                          builder: (context) => const HomeScreen()),
                     ),
                 child: Container(
                   margin: const EdgeInsets.all(40),

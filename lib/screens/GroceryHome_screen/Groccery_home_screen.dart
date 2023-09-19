@@ -2,15 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:miniproject/constant/app_colors.dart';
 import 'package:miniproject/constant/app_images.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:miniproject/screens/GroceryHome_screen/widgets/Groccery_item_card.dart';
+import 'package:miniproject/screens/GroceryHome_screen/widgets/Groccery_slider_card.dart';
+import 'package:miniproject/constant/app_list.dart';
 
-class GrocerryHomeScreen extends StatelessWidget {
+class GrocerryHomeScreen extends StatefulWidget {
   const GrocerryHomeScreen({super.key});
+
+  @override
+  State<GrocerryHomeScreen> createState() => _GrocerryHomeScreenState();
+}
+
+class _GrocerryHomeScreenState extends State<GrocerryHomeScreen> {
+  void addToCart(item) {
+    setState(() {
+      Applist.cartItem.add(item);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
                 height: MediaQuery.of(context).size.height * 0.3,
@@ -26,7 +42,7 @@ class GrocerryHomeScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              'Hey, Halal',
+                              'Hey, Kamran',
                               style: TextStyle(
                                   color: Appcolors.black_1,
                                   fontSize: 22.0,
@@ -52,7 +68,7 @@ class GrocerryHomeScreen extends StatelessWidget {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        '3',
+                                        Applist.cartItem.length.toString(),
                                         style: TextStyle(
                                             color: Appcolors.black_1,
                                             fontSize: 10.0),
@@ -195,168 +211,49 @@ class GrocerryHomeScreen extends StatelessWidget {
                   bottom: 50,
                   child: SvgPicture.asset(AppImages.smallCircleYellow)),
               Container(
-                margin: const EdgeInsets.only(top: 20),
+                margin: const EdgeInsets.only(top: 10),
+                height: 140,
                 width: MediaQuery.of(context).size.width * 1,
-                child: SingleChildScrollView(
+                child: ListView.builder(
+                  itemBuilder: (_, index) {
+                    return GroccessorySliderCard(
+                        headingNum: '\$346',
+                        headingTxt: 'USD',
+                        subHeading: 'Your Total Saving',
+                        color: Appcolors.darkOrange);
+                  },
+                  itemCount: 4,
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          height: 128,
-                          width: 158,
-                          decoration: BoxDecoration(
-                              color: Appcolors.ligtOrange,
-                              borderRadius: BorderRadius.circular(16)),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '346',
-                                    style: TextStyle(
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 2,
-                                  ),
-                                  Text('USD',
-                                      style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.w300,
-                                      ))
-                                ],
-                              ),
-                              SizedBox(
-                                height: 2,
-                              ),
-                              Text(
-                                'Your total savings',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14.0,
-                                    height: 2.0),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 128,
-                          width: 158,
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFE4DDCB),
-                              borderRadius: BorderRadius.circular(16)),
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '215',
-                                    style: TextStyle(
-                                      fontSize: 26,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 2,
-                                  ),
-                                  Text('HRS',
-                                      style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.w300,
-                                      ))
-                                ],
-                              ),
-                              SizedBox(
-                                height: 2,
-                              ),
-                              Text(
-                                'Your time saveds',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14.0,
-                                    height: 2.0),
-                              )
-                            ],
-                          ),
-                        )
-                      ]),
                 ),
               ),
             ]),
             const SizedBox(
-              height: 10,
+              height: 5,
             ),
-            Stack(children: [
-              Container(
-                height: 194,
-                width: 180,
-                padding: const EdgeInsets.all(10.0),
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(12)),
-                  color: Appcolors.black_10,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Center(
-                      child: Image.asset(
-                        AppImages.blankAvatar,
-                        height: 110,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: Text(
-                        '325',
-                        style: TextStyle(
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w600,
-                            height: 2.0,
-                            color: Appcolors.black_90),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: Text(
-                        'Orange Package 1\n| 1 bundle',
-                        style: TextStyle(
-                            color: Appcolors.black_45,
-                            fontSize: 12.0,
-                            fontWeight: FontWeight.w400,
-                            letterSpacing: 0.9),
-                      ),
-                    ),
-                  ],
-                ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, bottom: 5, top: 5),
+              child: Text(
+                'Deals on Fruits & Tea',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Appcolors.black_90),
               ),
-              Positioned(
-                bottom: 40,
-                right: -2,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(10.0),
-                      backgroundColor: Appcolors.darkBlue,
-                    ),
-                    onPressed: () {},
-                    child: SvgPicture.asset(
-                      AppImages.plusIcon,
-                      height: 10,
-                      width: 10,
-                    )),
-              ),
-            ])
+            ),
+            Expanded(
+                child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, mainAxisSpacing: 10),
+              itemBuilder: (context, index) {
+                return GrocceryItemCard(
+                  itemImage: Applist.groceryList[index]['item_image'],
+                  itemPrice: Applist.groceryList[index]['item_price'],
+                  itemDes: Applist.groceryList[index]['item_description'],
+                  addtoCart: () => addToCart(Applist.groceryList[index]),
+                );
+              },
+              itemCount: Applist.groceryList.length,
+            ))
           ],
         ),
       ),
