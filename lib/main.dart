@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:miniproject/screens/Main_Screen/MainScreen.dart';
 import 'package:miniproject/screens/Onbording_screen/Onbording_screen.dart';
 
 void main() {

@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:miniproject/screens/GroceryHome_screen/widgets/Groccery_item_card.dart';
 import 'package:miniproject/screens/GroceryHome_screen/widgets/Groccery_slider_card.dart';
 import 'package:miniproject/constant/app_list.dart';
+import 'package:miniproject/screens/cart_screen/cart_screen.dart';
+import 'package:miniproject/screens/singleProductScreen/singleProductScreen.dart';
 
 class GrocerryHomeScreen extends StatefulWidget {
   const GrocerryHomeScreen({super.key});
@@ -51,10 +53,22 @@ class _GrocerryHomeScreenState extends State<GrocerryHomeScreen> {
                           ),
                           Stack(
                             children: [
-                              SvgPicture.asset(
-                                AppImages.bagAvatar,
-                                height: 22,
-                                width: 22,
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CartScreen(
+                                              item: Applist.cartItem,
+                                            )),
+                                  );
+                                  setState(() {});
+                                },
+                                child: SvgPicture.asset(
+                                  AppImages.bagAvatar,
+                                  height: 22,
+                                  width: 22,
+                                ),
                               ),
                               Positioned(
                                   top: 0,
@@ -245,11 +259,22 @@ class _GrocerryHomeScreenState extends State<GrocerryHomeScreen> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, mainAxisSpacing: 10),
               itemBuilder: (context, index) {
-                return GrocceryItemCard(
-                  itemImage: Applist.groceryList[index]['item_image'],
-                  itemPrice: Applist.groceryList[index]['item_price'],
-                  itemDes: Applist.groceryList[index]['item_description'],
-                  addtoCart: () => addToCart(Applist.groceryList[index]),
+                return GestureDetector(
+                  onTap: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SingleProductScreen(
+                              SingleProduct: Applist.groceryList[index])),
+                    );
+                    setState(() {});
+                  },
+                  child: GrocceryItemCard(
+                    itemImage: Applist.groceryList[index]['item_image'][0],
+                    itemPrice: Applist.groceryList[index]['item_price'],
+                    itemDes: Applist.groceryList[index]['item_description'],
+                    addtoCart: () => addToCart(Applist.groceryList[index]),
+                  ),
                 );
               },
               itemCount: Applist.groceryList.length,

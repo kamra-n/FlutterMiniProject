@@ -86,7 +86,11 @@ class _OnbordingState extends State<Onbording> {
                         height: 100,
                       ),
                       Center(
-                        child: Image.asset(AppImages.blankAvatar),
+                        child: Image.asset(
+                          AppImages.blankAvatar,
+                          height: 150,
+                          width: 150,
+                        ),
                       ),
                     ],
                   );

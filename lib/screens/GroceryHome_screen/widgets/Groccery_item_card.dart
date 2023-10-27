@@ -35,7 +35,7 @@ class GrocceryItemCard extends StatelessWidget {
               child: Image.asset(
                 itemImage,
                 height: 100,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
             Padding(

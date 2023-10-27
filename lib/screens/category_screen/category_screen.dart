@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:miniproject/constant/app_list.dart';
+import 'package:miniproject/screens/singleProductScreen/singleProductScreen.dart';
 
 import '../../constant/app_colors.dart';
 import '../../constant/app_images.dart';
@@ -170,17 +171,30 @@ class _Category_screenState extends State<Category_screen> {
                           width: MediaQuery.of(context).size.width * 0.9,
                           child: Row(
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: index % 2 == 0
-                                        ? Appcolors.ligtOrange
-                                        : const Color(0xFFFFC3BB),
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Image.asset(
-                                  Applist.groceryList[index]['item_image'],
-                                  height: double.infinity,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                              GestureDetector(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SingleProductScreen(
+                                                SingleProduct: Applist
+                                                    .groceryList[index])),
+                                  );
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: index % 2 == 0
+                                          ? Appcolors.ligtOrange
+                                          : const Color(0xFFFFC3BB),
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Image.asset(
+                                    Applist.groceryList[index]['item_image'][0],
+                                    height: double.infinity,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                  ),
                                 ),
                               ),
                               Padding(
@@ -240,17 +254,30 @@ class _Category_screenState extends State<Category_screen> {
                           width: MediaQuery.of(context).size.width * 0.9,
                           child: Row(
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: index % 2 == 0
-                                        ? Appcolors.ligtOrange
-                                        : const Color(0xFFFFC3BB),
-                                    borderRadius: BorderRadius.circular(15)),
-                                child: Image.asset(
-                                  filterData[index]['item_image'],
-                                  height: double.infinity,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                              GestureDetector(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            SingleProductScreen(
+                                                SingleProduct:
+                                                    filterData[index])),
+                                  );
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: index % 2 == 0
+                                          ? Appcolors.ligtOrange
+                                          : const Color(0xFFFFC3BB),
+                                      borderRadius: BorderRadius.circular(15)),
+                                  child: Image.asset(
+                                    filterData[index]['item_image'][0],
+                                    height: double.infinity,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                  ),
                                 ),
                               ),
                               Padding(

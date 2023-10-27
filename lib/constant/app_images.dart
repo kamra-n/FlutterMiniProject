@@ -15,4 +15,8 @@ class AppImages {
   static String moreIcon = 'assets/images/moreIcon.svg';
   static String appleImage = 'assets/images/appleImage.png';
   static String orangeImage = 'assets/images/orange.png';
+  static String thunderIcon = 'assets/images/thunderIcon.svg';
+  static String hashIcon = 'assets/images/hashIcon.svg';
+  static String backIcon = 'assets/images/backIcon.svg';
+  static String minusIcon = 'assets/images/MinusIcon.svg';
 }
